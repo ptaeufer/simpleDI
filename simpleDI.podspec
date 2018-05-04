@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
 
   s.homepage     = "http://www.patrick-taeufer.de"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
-
+  s.static_framework = true
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -42,7 +42,11 @@ Pod::Spec.new do |s|
   s.license      = "MIT"
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
-  s.script_phase = { :name => 'build dependencies', :script => '${PODS_TARGET_SRCROOT}/buildDependencies.sh' }
+  s.script_phase = { 
+    :name => 'build dependencies', 
+    :script => '${PODS_TARGET_SRCROOT}/buildDependencies.sh',
+    :execution_position => :before_compile 
+    }
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
