@@ -28,9 +28,8 @@ Pod::Spec.new do |s|
   a simple to use dependency injection library
                    DESC
 
-  s.homepage     = "http://www.patrick-taeufer.de"
+  s.homepage     = "https://github.com/ptaeufer/simpleDI"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
-  s.static_framework = true
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -85,7 +84,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/ptaeufer/simpleDI", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/ptaeufer/simpleDI.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -95,8 +94,9 @@ Pod::Spec.new do |s|
   #  For header files it will include any header in the folder.
   #  Not including the public_header_files will make all headers public.
   #
+  s.swift_version = "3.0"
 
-  s.source_files = "simpleDI", "simpleDI/**/*.{h,m,swift}"
+  s.source_files = "simpleDI", "simpleDI/**/*.{h,swift}"
   s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"

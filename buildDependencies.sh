@@ -1,6 +1,5 @@
 cd ..
 pool=$(find ${PWD} -name "Injector.swift")
->$(find ${PWD} -name "Injector.swift")
 
 write_enum()
 {
@@ -26,6 +25,11 @@ write_enum()
   echo "}" >> $pool
 }
 
+if [[ -z "$pool" ]]
+then
+echo "skip"
+else
+>$(find ${PWD} -name "Injector.swift")
 
 echo "import Foundation" >> $pool
 echo "" >> $pool
@@ -98,7 +102,8 @@ private func inject<T>(_ name : String) -> T {
         return obj
     }
     fatalError(\"dependency for \(name).self not found\")
-}" >> $pool
+}" >> $pool;
+fi
 
 
 
