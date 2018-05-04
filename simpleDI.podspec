@@ -43,7 +43,7 @@ Pod::Spec.new do |s|
 
   s.script_phase = { 
     :name => 'build dependencies', 
-    :script => '${PODS_TARGET_SRCROOT}/buildDependencies.sh',
+    :script => 'bash $(find . -name "buildDependencies.sh")',
     :execution_position => :before_compile 
     }
 
