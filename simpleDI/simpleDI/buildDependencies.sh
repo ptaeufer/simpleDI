@@ -42,11 +42,11 @@ for file in $(find ${PWD} -name "*.swift"); do
 #sed -i '' -e 's/class / open class /g' $file
 for name in $(cat $file | grep "class" | sed -n 's/.*class *\(.*\) *: *DependencyModule.*/\1/p' | sort -u); do
 
-sed -i '' -e 's/ private //g' $file
-sed -i '' -e 's/ lazy var / var /g' $file
-sed -i '' -e 's/ var / let /g' $file
-sed -i '' -e 's/ let / static let /g' $file
-sed -i '' -e 's/ func / static func /g' $file
+sed -i '' -e 's/private//g' $file
+sed -i '' -e 's/lazy var /var /g' $file
+sed -i '' -e 's/var /let /g' $file
+sed -i '' -e 's/let /static let /g' $file
+sed -i '' -e 's/func /static func /g' $file
 sed -i '' -e 's/static static func / static func /g' $file
 sed -i '' -e 's/static static let / static let /g' $file
 
