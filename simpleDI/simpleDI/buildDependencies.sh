@@ -29,7 +29,7 @@ if [[ -z "$pool" ]]
 then
 echo "skip"
 else
->$(find ${PWD} -name "Injector.swift")
+$(find ${PWD} -name "Injector.swift")
 
 echo "import Foundation" >> $pool
 echo "" >> $pool
@@ -38,42 +38,40 @@ echo "class Injector{" >> $pool
 
 echo "   public static let dependencies : Dictionary<Injector.classes,()->AnyObject> = [" >> $pool
 dependenciesFound=0
-for file in $(find ${PWD} -name "*.swift"); do
-#sed -i '' -e 's/class / open class /g' $file
-for name in $(cat $file | grep "class" | sed -n 's/.*class *\(.*\) *: *DependencyModule.*/\1/p' | sort -u); do
-
-sed -i '' -e 's/private//g' $file
-sed -i '' -e 's/lazy var /var /g' $file
-sed -i '' -e 's/var /let /g' $file
-sed -i '' -e 's/let /static let /g' $file
-sed -i '' -e 's/func /static func /g' $file
-sed -i '' -e 's/static static func / static func /g' $file
-sed -i '' -e 's/static static let / static let /g' $file
-
-contents=$(cat $file | grep "static let" | sed -n 's/.*static let *\([a-zA-Z0-9_\-]*\) *: *\([a-zA-Z0-9_\-]*\) *.*=.*/\1|\2/p')
-
-contents_func=$(cat $file | grep "static func" | sed -n 's/.*static func *\([a-zA-Z0-9_\-]*\) *.*> *\([a-zA-Z0-9_\-]*\) *.*/\1|\2/p')
-
 classes=()
+for file in $(find ${PWD} -name "*.swift"); do
 
-for _name in $contents_func; do
-echo $_name
-dependenciesFound=$((dependenciesFound+1))
-var1=${_name%|*}
-var2=${_name#*|}
-classes+=" $var2"
-echo ".$var2 : $name.$var1," >> $pool
-done
+#sed -i '' -e 's/class / open class /g' $file
+    for name in $(cat $file | grep "class" | sed -n 's/.*class *\(.*\) *: *DependencyModule.*/\1/p' | sort -u); do
 
-for _name in $contents; do
-echo $_name
-dependenciesFound=$((dependenciesFound+1))
-var1=${_name%|*}
-var2=${_name#*|}
-classes+=" $var2"
-echo ".$var2 : { return $name.$var1 }," >> $pool
-done
-done
+        sed -i '' -e 's/private//g' $file
+        sed -i '' -e 's/lazy var/var/g' $file
+        sed -i '' -e 's/var/let/g' $file
+        sed -i '' -e 's/let/static let/g' $file
+        sed -i '' -e 's/func/static func/g' $file
+        sed -i '' -e 's/static static func/static func/g' $file
+        sed -i '' -e 's/static static let/static let/g' $file
+
+        contents=$(cat $file | grep "static let" | sed -n 's/.*static let *\([a-zA-Z0-9_\-]*\) *: *\([a-zA-Z0-9_\-]*\) *.*=.*/\1|\2/p')
+        contents_func=$(cat $file | grep "static func" | sed -n 's/.*static func *\([a-zA-Z0-9_\-]*\) *.*> *\([a-zA-Z0-9_\-]*\) *.*/\1|\2/p')
+
+        for _name in $contents_func; do
+            dependenciesFound=$((dependenciesFound+1))
+            var1=${_name%|*}
+            var2=${_name#*|}
+            classes+=" $var2"
+            echo ".$var2 : $name.$var1," >> $pool
+        done
+
+        for _name in $contents; do
+            dependenciesFound=$((dependenciesFound+1))
+            var1=${_name%|*}
+            var2=${_name#*|}
+            classes+=" $var2"
+            echo ".$var2 : { return $name.$var1 }," >> $pool
+        done
+
+    done
 done
 
 if [[ "$dependenciesFound" -eq 0 ]]
@@ -84,6 +82,7 @@ echo "]" >> $pool
 
 echo "" >> $pool
 echo "}" >> $pool
+echo $classes
 write_enum "classes" $classes
 
 echo "open class DependencyModule{}
