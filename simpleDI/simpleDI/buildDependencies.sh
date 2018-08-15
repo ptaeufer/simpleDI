@@ -29,7 +29,7 @@ if [[ -z "$pool" ]]
 then
 echo "skip"
 else
-$(find ${PWD} -name "Injector.swift")
+>$(find ${PWD} -name "Injector.swift")
 
 echo "import Foundation" >> $pool
 echo "" >> $pool

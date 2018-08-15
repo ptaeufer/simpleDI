@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "simpleDI"
-  s.version      = "0.0.9"
+  s.version      = "1.0.0"
   s.summary      = "dependency injection"
 
   # This description is used to generate tags and improve search results.
