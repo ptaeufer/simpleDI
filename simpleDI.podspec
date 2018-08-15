@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "simpleDI"
-  s.version      = "0.0.7"
+  s.version      = "0.0.8"
   s.summary      = "dependency injection"
 
   # This description is used to generate tags and improve search results.
@@ -94,7 +94,7 @@ Pod::Spec.new do |s|
   #  For header files it will include any header in the folder.
   #  Not including the public_header_files will make all headers public.
   #
-  s.swift_version = "3.0"
+  s.swift_version = "4.0"
 
   s.source_files = "simpleDI", "simpleDI/**/*.{h,swift,sh}"
   s.exclude_files = "Classes/Exclude"
