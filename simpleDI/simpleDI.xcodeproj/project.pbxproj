@@ -10,6 +10,7 @@
 		ADE1101E209C5D1A00D78ADE /* simpleDI.h in Headers */ = {isa = PBXBuildFile; fileRef = ADE1101C209C5D1A00D78ADE /* simpleDI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ADE11027209C644300D78ADE /* _Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE11026209C644300D78ADE /* _Injector.swift */; };
 		ADE11029209CA95000D78ADE /* buildDependencies.sh in Resources */ = {isa = PBXBuildFile; fileRef = ADE11028209CA94F00D78ADE /* buildDependencies.sh */; };
+		D039AE5E215002540028E771 /* simpleDI.podspec in Resources */ = {isa = PBXBuildFile; fileRef = D039AE5D215002540028E771 /* simpleDI.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +19,7 @@
 		ADE1101D209C5D1A00D78ADE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADE11026209C644300D78ADE /* _Injector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _Injector.swift; sourceTree = "<group>"; };
 		ADE11028209CA94F00D78ADE /* buildDependencies.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = buildDependencies.sh; sourceTree = "<group>"; };
+		D039AE5D215002540028E771 /* simpleDI.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = simpleDI.podspec; path = ../simpleDI.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +36,7 @@
 		ADE1100F209C5D1A00D78ADE = {
 			isa = PBXGroup;
 			children = (
+				D039AE5D215002540028E771 /* simpleDI.podspec */,
 				ADE1101B209C5D1A00D78ADE /* simpleDI */,
 				ADE1101A209C5D1A00D78ADE /* Products */,
 			);
@@ -129,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADE11029209CA95000D78ADE /* buildDependencies.sh in Resources */,
+				D039AE5E215002540028E771 /* simpleDI.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

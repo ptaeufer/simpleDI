@@ -39,7 +39,7 @@ echo "class Injector{" >> $pool
 echo "   public static let dependencies : Dictionary<Injector.classes,()->AnyObject> = [" >> $pool
 dependenciesFound=0
 classes=()
-for file in $(find ${PWD} -name "*.swift"); do
+for file in $(find ${PWD} -not -path "*/Pods/*"  -name "*.swift"); do
 
 #sed -i '' -e 's/class / open class /g' $file
     for name in $(cat $file | grep "class" | sed -n 's/.*class *\(.*\) *: *DependencyModule.*/\1/p' | sort -u); do
