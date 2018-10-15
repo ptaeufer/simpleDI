@@ -91,7 +91,7 @@ func inject<T>() -> T {
     return inject(String(describing : T.self))
 }
 
-func inject<T>(_ c : AnyClass) -> T {
+func inject<T>(_ c : T.Type) -> T {
     return inject(String(describing : c))
 }
 
